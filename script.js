@@ -33,7 +33,7 @@ $(document).ready(function () {
   function getWeather(lat, lon, city) {
 
     //var city = $("#citySearchTextField").val();
-    var baseURL = "http://api.openweathermap.org/data/2.5/";
+    var baseURL = "https://api.openweathermap.org/data/2.5/";
 
     if (lat !== undefined && lon !== undefined) {
       var queryParam = "lat=" + lat + "&lon=" + lon;
@@ -62,7 +62,7 @@ $(document).ready(function () {
       $("#windSpeed").html("Wind Speed: "+ responseW.wind.speed + " MPH");
 
       // Set weather icon
-      var image_src = "http://openweathermap.org/img/wn/" + responseW.weather[0].icon +"@2x.png";
+      var image_src = "https://openweathermap.org/img/wn/" + responseW.weather[0].icon +"@2x.png";
       $("#currentImg").attr("src",image_src);
       
       // Call Weather API for UV Index
@@ -87,7 +87,7 @@ $(document).ready(function () {
   function getFiveDayWeather(lat, lon, city){
 
     //var city = $("#citySearchTextField").val();
-    var baseURL = "http://api.openweathermap.org/data/2.5/forecast?&cnt=5&units=imperial&";
+    var baseURL = "https://api.openweathermap.org/data/2.5/forecast?&cnt=5&units=imperial&";
     if (lat !== undefined && lon !== undefined) {
       var queryParam = "lat=" + lat + "&lon=" + lon;
     }
@@ -117,7 +117,7 @@ $(document).ready(function () {
         $(humidField).html("Humidity: "+ item.main.humidity + "%");
 
         // Set weather image
-        var image_src_forecast = "http://openweathermap.org/img/wn/" + item.weather[0].icon +"@2x.png";
+        var image_src_forecast = "https://openweathermap.org/img/wn/" + item.weather[0].icon +"@2x.png";
         $(imageField).attr("src",image_src_forecast);
       });
 
@@ -159,7 +159,9 @@ $(document).ready(function () {
   $("#searchButton").on("click", function (event) {
     event.preventDefault();
 
-    // Add city to search history
+    // Add city to search history    
+    var cityIndex = cityList.indexOf($("#citySearchTextField").val());
+    if(cityIndex >= 0){ cityList.splice(cityIndex,1)};
     if(cityList.length >= 5){cityList.shift()};
     cityList.push($("#citySearchTextField").val());
     localStorage.setItem(citylistStoreID,JSON.stringify(cityList));
