@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap Library -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <!-- Google Fonts -->
+
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/ba1cbdf0bb.js" crossorigin="anonymous"></script>
+    <!-- Google Places Library -->
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeM1m73twcAewk29CbTe4IJIIc4U1hQkQ&libraries=places"></script>
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather Dashboard</title>
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row ">
+            <h1 class="col h1 title pt-1 pb-3 mx-auto text-center ">Weather Dashboard </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-3 bg-light" id="searchPanel">
+                <p class="h4">Search for a city</p>
+                <div class="input-group mb-3 " id="searchBox">
+                    <input type="text" class="form-control" id="citySearchTextField" placeholder="Enter city name" aria-label="Enter city name"
+                        aria-describedby="searchButton">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary bg-primary text-white" type="button"
+                            id="searchButton"><i class="fas fa-search"></i></button>
+
+                    </div>
+                </div>
+                <div id="pastSearch">
+                    <ul class="list-group" id="searchHistory">
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-9">
+                <div class="row border ml-1 py-3 px-2" id="currentW">
+                    <div class="col ">
+                        <h3 class="h2 py-2"><span id="cityName">loading...</span> <span id="currentDate"></span><img src=""
+                                id="currentImg"></h3>
+                        <h5 class="font-weight-normal normal-text my-3" id="temperature"></h5>
+                        <h5 class="font-weight-normal normal-text my-3" id="humidity"></h5>
+                        <h5 class="font-weight-normal normal-text my-3" id="windSpeed"></h5>
+                        <h5 class="font-weight-normal normal-text my-3" id="uvIndex"></h5>
+                    </div>
+
+                </div>
+                <div class="row " id="fiveDayW">
+
+                    <div class="col ">
+                        <h3 class="h2 py-2">5-Day Forecast:</h3>
+
+                        <div class="row " id="futureForecast">
+
+                            <div class="col d-flex flex-column flex-lg-row justify-content-between">
+
+                                <div class="card text-white bg-primary mb-3 text-left" style="max-width: 9rem;">
+                                    <!-- <div class="card-header">Header</div> -->
+                                    <div class="pl-2 pr-4 py-2">
+                                        <h5 class="card-title" id="day1">loading...</h5>
+                                        <img src="" id="imgDay1">
+                                        <p class="card-text" id="temperaturePlus1"></p>
+                                        <p class="card-text" id="humidityPlus1"></p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-white bg-primary mb-3 text-left" style="max-width: 9rem;">
+                                    <!-- <div class="card-header">Header</div> -->
+                                    <div class="pl-2 pr-4 py-2">
+                                        <h5 class="card-title" id="day2">loading...</h5>
+                                        <img src="" id="imgDay2">
+                                        <p class="card-text" id="temperaturePlus2"></p>
+                                        <p class="card-text" id="humidityPlus2"></p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-white bg-primary mb-3 text-left" style="max-width: 9rem;">
+                                    <!-- <div class="card-header">Header</div> -->
+                                    <div class="pl-2 pr-4 py-2">
+                                        <h5 class="card-title" id="day3">loading...</h5>
+                                        <img src="" id="imgDay3">
+                                        <p class="card-text" id="temperaturePlus3"></p>
+                                        <p class="card-text" id="humidityPlus3"></p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-white bg-primary mb-3 text-left" style="max-width: 9rem;">
+                                    <!-- <div class="card-header">Header</div> -->
+                                    <div class="pl-2 pr-4 py-2">
+                                        <h5 class="card-title" id="day4">loading...</h5>
+                                        <img src="" id="imgDay4">
+                                        <p class="card-text" id="temperaturePlus4"></p>
+                                        <p class="card-text" id="humidityPlus4"></p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-white bg-primary mb-3 text-left" style="max-width: 9rem;">
+                                    <!-- <div class="card-header">Header</div> -->
+                                    <div class="pl-2 pr-4 py-2">
+                                        <h5 class="card-title" id="day5">loading...</h5>
+                                        <img src="" id="imgDay5">
+                                        <p class="card-text" id="temperaturePlus5"></p>
+                                        <p class="card-text" id="humidityPlus5"></p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- JQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- MonentJs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
