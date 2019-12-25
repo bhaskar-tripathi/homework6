@@ -58,7 +58,7 @@ $(document).ready(function () {
 
       $("#cityName").html(responseW.name); 
       $("#temperature").html("Temperature: "+ responseW.main.temp + " &#8457");
-      $("#humidity").html("Humidity: "+ responseW.main.humidityy + "%");
+      $("#humidity").html("Humidity: "+ responseW.main.humidity + "%");
       $("#windSpeed").html("Wind Speed: "+ responseW.wind.speed + " MPH");
 
       // Set weather icon
